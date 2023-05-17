@@ -365,8 +365,8 @@ unsigned char check_clm(unsigned char pin_var)
 void Disp_pass_key(unsigned char key_var)
 {
 	static unsigned char pass_var1 = 0;
-	static unsigned char key_arr[5];
-	unsigned char enter_key[5] = {"12345"};
+	static unsigned char key_arr[4];
+	unsigned char enter_key[4] = {"1245"};
 	unsigned char i;
 
 	if(key_var != 16)
@@ -374,10 +374,10 @@ void Disp_pass_key(unsigned char key_var)
 		key_arr[pass_var1] = key_var + 48;
 		LCD(key_var + 48, 1);
 		pass_var1++;
-		if(pass_var1 == 5)
+		if(pass_var1 == 4)
 		{
 			LCD(0xC0, 0);
-			for(i=0; i<5; i++)
+			for(i=0; i<4; i++)
 			{
 				if(key_arr[i] != enter_key[i])
 				{                                            //DISPLAY PRESSED KEY FUNCTION
@@ -387,7 +387,7 @@ void Disp_pass_key(unsigned char key_var)
 					break;
 				}
 			}
-			if(i == 5)
+			if(i == 4)
 			{
 				LCD_str("Welcome!!!");
 				stepper_forward(10);
